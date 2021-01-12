@@ -13,5 +13,5 @@ it('renders correctly', () => {
 });
 
 it('initializes the `state` with an empty list of gifs', () => {
-  expect(app.state().gifts.toEqual([]));
+  expect(app.state().gifts).toEqual([]);
 });
