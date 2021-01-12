@@ -1,9 +1,11 @@
-function App() {
-  return (
-    <div className="App">
-      <h1>Learn React Testing</h1>
-    </div>
-  );
-}
+import React, { Component } from 'react'
 
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <h2>Gift Giver</h2>
+      </div>
+    )
+  }
+}
