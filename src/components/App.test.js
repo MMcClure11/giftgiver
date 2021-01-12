@@ -6,26 +6,32 @@ import App from './App';
 
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
-const app = shallow(<App />);
+describe('App', () => {
+  const app = shallow(<App />);
 
-it('renders correctly', () => {
-  expect(app).toMatchSnapshot()
+  it('renders correctly', () => {
+    expect(app).toMatchSnapshot()
+  });
+
+  it('initializes the `state` with an empty list of gifs', () => {
+    expect(app.state().gifts).toEqual([]);
+  });
+
+  describe('when clicking the `add-gift` button', () => {
+    beforeEach(() => {
+      app.find('.btn-add').simulate('click');
+    });
+
+    afterEach(() => {
+      app.setState({ gifts: [] })
+    });
+
+    it('adds a new gift to `state`', () => {
+      expect(app.state().gifts).toEqual([{ id: 1}]);
+    });
+  
+    it('adds a new gift to the rendered list', () => {
+      expect(app.find('.gift-list').children().length).toEqual(1)
+    });
+  });
 });
-
-it('initializes the `state` with an empty list of gifs', () => {
-  expect(app.state().gifts).toEqual([]);
-});
-
-it('adds a new gift to `state` when clicking the `add gift` button', () => {
-  app.find('.btn-add').simulate('click');
-
-  expect(app.state().gifts).toEqual([{ id: 1}]);
-});
-
-it('adds a new gift to the rendered list when clicking the `add gift` button', () => {
-  app.find('.btn-add').simulate('click');
-
-  expect(app.find('.gift-list').children().length).toEqual(2)
-});
-//Test Pollution: we clicked the button earlier, so now it has been clicked twice which is why we expect it to equal 2
-//We want all the tests to be independent, so will need to fix
