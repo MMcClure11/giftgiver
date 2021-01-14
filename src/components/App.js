@@ -36,7 +36,11 @@ export default class App extends Component {
           { 
             this.state.gifts.map(gift => {
               return (
-                <Gift key={gift.id} />
+                <Gift 
+                  key={gift.id} 
+                  gift={gift}
+                  removeGift={this.removeGift}
+                />
               )
             })
           }
