@@ -16,4 +16,16 @@ describe('Gift', () => {
   it('initializes a person and a gift in `state', () => {
     expect(gift.state()).toEqual({person: '', present: ''});
   });
+
+  describe('when typing into the person input', () => {
+    const person = 'Uncle';
+
+    beforeEach(() => {
+      gift.find('.input-person').simulate('change', { target: { value: person } });
+    });
+
+    it('updates the person in `state', () => {
+      expect(gift.state().person).toEqual(person);
+    })
+  });
 });
