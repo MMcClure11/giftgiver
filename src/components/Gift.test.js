@@ -16,7 +16,7 @@ describe('Gift', () => {
     expect(gift).toMatchSnapshot();
   });
 
-  it('initializes a person and a gift in `state', () => {
+  it('initializes a person and a gift in `state`', () => {
     expect(gift.state()).toEqual({person: '', present: ''});
   });
 
@@ -27,7 +27,7 @@ describe('Gift', () => {
       gift.find('.input-person').simulate('change', { target: { value: person } });
     });
 
-    it('updates the person in `state', () => {
+    it('updates the person in `state`', () => {
       expect(gift.state().person).toEqual(person);
     })
   });
@@ -39,7 +39,7 @@ describe('Gift', () => {
       gift.find('.input-present').simulate('change', { target: { value: present } });
     });
 
-    it('updates the present in `state', () => {
+    it('updates the present in `state`', () => {
       expect(gift.state().present).toEqual(present);
     });
   });
